@@ -17,6 +17,6 @@ http:
 
     matchers:
       - type: regex
-        part: header
+        part: body
         regex:
           - "root:[x*]:0:0"
